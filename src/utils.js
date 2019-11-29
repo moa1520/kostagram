@@ -4,6 +4,7 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 import { adjectives, nouns } from "./words";
 import nodemailer from "nodemailer";
 import mg from "nodemailer-mailgun-transport";
+import jwt from "jsonwebtoken";
 
 export const generateSecret = () => {
   const randomNumber = Math.floor(Math.random() * adjectives.length);
@@ -26,7 +27,9 @@ export const sendScretMail = (address, secret) => {
     from: "kozza@kostagram.com",
     to: address,
     subject: "🔒 Login Scret for Kostagram 🔒",
-    html: `Hello! Your login secret is ${secret}. <br />Copy paste on the App/Website to log in`
+    html: `Hello! Your login secret is <b>${secret}</b>. <br />Copy paste on the App/Website to log in`
   };
   return sendMail(email);
 };
+
+export const generateToken = id => jwt.sign({ id }, process.env.JWT_SECRET);
