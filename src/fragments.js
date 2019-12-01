@@ -1,9 +1,9 @@
-export const USER_FRAGMENT = `
+const USER_FRAGMENT = `
     id
     username
 `;
 
-export const COMMENT_FRAGMENT = `
+const COMMENT_FRAGMENT = `
     id
     text
     user {
@@ -11,7 +11,7 @@ export const COMMENT_FRAGMENT = `
     }
 `;
 
-export const FILE_FRAGMENT = `
+const FILE_FRAGMENT = `
     id
     url
 `;
