@@ -24,7 +24,7 @@ export const sendScretMail = (address, secret) => {
     from: "kozza@kostagram.com",
     to: address,
     subject: "🔒 Login Scret for Kostagram 🔒",
-    html: `Hello! Your login secret is <b>${secret}</b>. <br />Copy paste on the App/Website to log in`
+    html: `Hello! Your login secret is <b>${secret}</b> <br />Copy paste on the App/Website to log in`
   };
   return sendMail(email);
 };

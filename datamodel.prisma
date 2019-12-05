@@ -8,9 +8,9 @@ type User {
   bio: String
   following: [User!]! @relation(name: "FollowRelation")
   followers: [User!]! @relation(name: "FollowRelation")
-  posts: [Post!]!
-  likes: [Like!]!
-  comments: [Comment!]!
+  posts: [Post!]! @relation(name: "PostsOfUser", onDelete: CASCADE)
+  likes: [Like!]! @relation(name: "LikesOfUser", onDelete: CASCADE)
+  comments: [Comment!]! @relation(name: "CommentOfUser", onDelete: CASCADE)
   rooms: [Room!]!
   loginSecret: String
   createdAt: DateTime @createdAt
@@ -19,10 +19,10 @@ type User {
 
 type Post {
   id: ID! @id
-  files: [File!]! @relation(name: "FileOfPost", onDelete: CASCADE)
   location: String
-  user: User!
   caption: String!
+  user: User @relation(name: "PostsOfUser")
+  files: [File!]! @relation(name: "FileOfPost", onDelete: CASCADE)
   likes: [Like!]! @relation(name: "LikeOfPost", onDelete: CASCADE)
   comments: [Comment!]! @relation(name: "CommentOfPost", onDelete: CASCADE)
   createdAt: DateTime @createdAt
@@ -31,7 +31,7 @@ type Post {
 
 type Like {
   id: ID! @id
-  user: User!
+  user: User @relation(name: "LikesOfUser")
   post: Post @relation(name: "LikeOfPost")
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updateAt
@@ -40,7 +40,7 @@ type Like {
 type Comment {
   id: ID! @id
   text: String!
-  user: User!
+  user: User @relation(name: "CommentOfUser")
   post: Post @relation(name: "CommentOfPost")
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updateAt

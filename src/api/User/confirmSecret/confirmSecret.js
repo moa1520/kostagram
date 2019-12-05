@@ -13,8 +13,7 @@ export default {
             loginSecret: ""
           }
         });
-        const token = generateToken(user.id);
-        return token;
+        return generateToken(user.id);
       } else {
         throw Error("Wrong email/scret combination");
       }
