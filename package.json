@@ -5,6 +5,9 @@
   "main": "index.js",
   "repository": "https://github.com/moa1520/kostagram.git",
   "author": "moa1520 <douit_be@naver.com>",
+  "engines": {
+    "node": "12.13.0"
+  },
   "license": "MIT",
   "dependencies": {
     "@babel/cli": "^7.7.5",
