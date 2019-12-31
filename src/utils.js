@@ -23,8 +23,8 @@ export const sendScretMail = (address, secret) => {
   const email = {
     from: "kozza@kostagram.com",
     to: address,
-    subject: "🔒 Login Secret for Kostagram 🔒",
-    html: `Hello! Your login secret is <b>${secret}</b> <br />Copy paste on the App/Website to log in`
+    subject: "🔒 Kostagram 인증코드 🔒",
+    html: `안녕하세요. <br/> Kostagram 인증코드: <b>${secret}</b> <br />앱 또는 사이트에 복사/붙여넣기 하세요`
   };
   return sendMail(email);
 };
