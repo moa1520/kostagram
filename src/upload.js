@@ -22,7 +22,7 @@ const upload = multer({
   })
 });
 
-export const uploadMiddleware = upload.single("file");
+export const uploadMiddleware = upload.array("file");
 
 export const uploadController = (req, res) => {
   const {
