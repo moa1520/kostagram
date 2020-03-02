@@ -1,7 +1,4 @@
-import axios from "axios";
 import { prisma } from "../../../../generated/prisma-client";
-
-const TOKEN = "ExponentPushToken[3FA0FuNQyAS6tHuSoImZc6]";
 
 export default {
   Mutation: {
@@ -9,15 +6,6 @@ export default {
       isAuthenticated(request);
       const { user } = request;
       const { roomId, message, toId } = args;
-      const { data } = await axios.post(
-        "https://exp.host/--/api/v2/push/send",
-        {
-          to: TOKEN,
-          title: "새 메시지가 도착했습니다",
-          body: message
-        }
-      );
-      console.log(data);
       let room;
       if (roomId === undefined) {
         if (user.id !== toId) {
